@@ -14,7 +14,7 @@ jobs:
             npm install --save
       - jira/notify:
           pipeline_id: 34cecaaa-90e8-402b-b6a3-67d557d77ad0
-          pipeline_number: 18
+          pipeline_number: 2
   build_docker_image:
     docker:
       - image: circleci/node:12
@@ -30,7 +30,7 @@ jobs:
             docker push ebtihajea/nodeapp:latest
       - jira/notify:
           pipeline_id: 123456-123456-123456
-          pipeline_number: 18
+          pipeline_number: 1
 
 workflows:
   build_tests:
