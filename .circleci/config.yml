@@ -29,7 +29,7 @@ jobs:
             echo "$TOKEN" | docker login -u ebtihajea --password-stdin
             docker push ebtihajea/nodeapp:latest
       - jira/notify:
-          pipeline_id: 56855d71-d054-4a38-afb9-2c5d49398b8d
+          pipeline_id: 123456-123456-123456
           pipeline_number: 29
 
 workflows:
