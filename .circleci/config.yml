@@ -31,6 +31,22 @@ jobs:
       - jira/notify:
           pipeline_id: 123456-123456-123456
           pipeline_number: 29
+    build_docker_image1:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t nodejswebapp1 -t ebtihajea/nodeapp:latest .
+            echo "$TOKEN" | docker login -u ebtihajea --password-stdin
+            docker push ebtihajea/nodeapp:latest
+      - jira/notify:
+          pipeline_id: 123456-123456-0000001
+          pipeline_number: 30
 
 workflows:
   build_tests:
@@ -38,4 +54,6 @@ workflows:
       - build_test:
           context: $JIRA_WEBHOOK_URL
       - build_docker_image:
+          context: $JIRA_WEBHOOK_URL
+      - build_docker_image1:
           context: $JIRA_WEBHOOK_URL
