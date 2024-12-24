@@ -1,5 +1,7 @@
 version: 2.1
-
+orbs:
+  jira: circleci/jira@2.0
+  node: circleci/node@5.1
 jobs:
   build_test:
     docker:
@@ -10,7 +12,9 @@ jobs:
           name: Install npm dependencies
           command: |
             npm install --save
-
+      - jira/notify:
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
   build_docker_image:
     docker:
       - image: circleci/node:12
@@ -29,4 +33,5 @@ workflows:
   build_tests:
     jobs:
       - build_test
+          context: JIRA_WEBHOOK
       - build_docker_image
