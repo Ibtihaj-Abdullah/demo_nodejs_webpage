@@ -3,7 +3,7 @@ orbs:
   jira: circleci/jira@2.0
   node: circleci/node@5.1
 jobs:
-  build_test:
+  deploy:
     docker:
       - image: circleci/node:12
     steps:
@@ -13,7 +13,7 @@ jobs:
           command: |
             npm install --save
       - jira/notify:
-          pipeline_id: 56855d71-d054-4a38-afb9-2c5d49398b8d
+          pipeline_id: 123456-123456-123456
           pipeline_number: 18
   build_docker_image:
     docker:
@@ -35,7 +35,7 @@ jobs:
 workflows:
   build_tests:
     jobs:
-      - build_test:
+      - deploy:
           context: $JIRA_WEBHOOK_URL
       - build_docker_image:
           context: $JIRA_WEBHOOK_URL
