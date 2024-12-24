@@ -30,7 +30,7 @@ jobs:
             docker push ebtihajea/nodeapp:latest
       - jira/notify:
           pipeline_id: 123456-123456-123456
-          pipeline_number: 29
+          pipeline_number: 18
 
 workflows:
   build_tests:
