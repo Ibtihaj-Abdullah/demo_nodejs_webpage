@@ -28,10 +28,14 @@ jobs:
             dockre build -t nodejswebapp1 -t ebtihajea/nodeapp:latest .
             echo "$TOKEN" | docker login -u ebtihajea --password-stdin
             docker push ebtihajea/nodeapp:latest
+      - jira/notify:
+          pipeline_id: 56855d71-d054-4a38-afb9-2c5d49398b8d
+          pipeline_number: 18
 
 workflows:
   build_tests:
     jobs:
       - build_test:
           context: $JIRA_WEBHOOK_URL
-      - build_docker_image
+      - build_docker_image:
+          context: $JIRA_WEBHOOK_URL
