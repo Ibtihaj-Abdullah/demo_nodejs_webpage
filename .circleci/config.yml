@@ -13,8 +13,8 @@ jobs:
           command: |
             npm install --save
       - jira/notify:
-          pipeline_id: << pipeline.id >>
-          pipeline_number: << pipeline.number >>
+          pipeline_id: 56855d71-d054-4a38-afb9-2c5d49398b8d
+          pipeline_number: 18
   build_docker_image:
     docker:
       - image: circleci/node:12
@@ -32,6 +32,6 @@ jobs:
 workflows:
   build_tests:
     jobs:
-      - build_test
-          context: JIRA_WEBHOOK
+      - build_test:
+          context: $JIRA_WEBHOOK_URL
       - build_docker_image
