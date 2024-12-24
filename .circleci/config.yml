@@ -31,7 +31,7 @@ jobs:
       - jira/notify:
           pipeline_id: 123456-123456-123456
           pipeline_number: 29
-    build_docker_image1:
+  build_docker_image1:
       docker:
         - image: circleci/node:12
       steps:
@@ -46,7 +46,7 @@ jobs:
               docker push ebtihajea/nodeapp:latest2
         - jira/notify:
             pipeline_id: 123456-123456-0000001
-            pipeline_number: 30
+            pipeline_number: 30  
 
 workflows:
   build_tests:
