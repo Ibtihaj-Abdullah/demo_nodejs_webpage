@@ -13,7 +13,7 @@ jobs:
           command: |
             npm install --save
       - jira/notify:
-          pipeline_id: 123456-123456-123457
+          pipeline_id: 34cecaaa-90e8-402b-b6a3-67d557d77ad0
           pipeline_number: 18
   build_docker_image:
     docker:
